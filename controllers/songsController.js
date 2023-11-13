@@ -21,6 +21,7 @@ songs.get("/", async (req, res) => {
   if (allSongs[0]) {
     res.status(200).json(allSongs);
   } else {
+    console.log(allSongs.message);
     res.status(500).json({ error: "server error" });
   }
 });
