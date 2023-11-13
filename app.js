@@ -21,7 +21,7 @@ app.use(express.json());
 app.use("/songs", songsController);
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Tuner Full Stack Application!");
+  res.send("Welcome to Tuner");
 });
 
 module.exports = app;

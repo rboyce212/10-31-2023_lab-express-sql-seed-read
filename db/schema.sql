@@ -1,13 +1,14 @@
-DROP DATABASE IF EXISTS songs_dev;
-CREATE DATABASE songs_dev;
+DROP DATABASE IF EXISTS colors_dev;
+CREATE DATABASE colors_dev;
 
-\c songs_dev;
+\c colors_dev;
 
 CREATE TABLE songs (
  id SERIAL PRIMARY KEY,
  name TEXT NOT NULL,
  artist TEXT NOT NULL,
  album TEXT,
- time TEXT,
- is_favorite BOOLEAN
+ year INT,
+ genre TEXT,
+ is_favorite BOOLEAN DEFAULT false
 );

@@ -1,10 +1,11 @@
-const app = require("./app");
+// DEPENDENCIES
+const app = require("./app.js");
 
-// Gives us access to our environment variables in .env
+// CONFIGURATION
 require("dotenv").config();
 const PORT = process.env.PORT;
 
-// Listener
+// LISTEN
 app.listen(PORT, () => {
-  console.log(`Listening on port: ${PORT}`);
+  console.log(`Listening on port ${PORT}`);
 });
