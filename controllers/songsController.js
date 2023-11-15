@@ -1,16 +1,21 @@
 // controllers/songsController.js
 const express = require("express");
 const songs = express.Router();
+
+// queries
 const {
   getAllSongs,
   getSong,
-  createSong,
+  addSong,
   deleteSong,
   updateSong,
 } = require("../queries/song");
+
+// validations
 const {
   checkName,
   checkArtist,
+  checkYear,
   checkBoolean,
 } = require("../validations/checkSongs");
 
@@ -40,14 +45,21 @@ songs.get("/:id", async (req, res) => {
 
 // Post a new song
 // localhost:3350/songs/
-songs.post("/", checkName, checkArtist, checkBoolean, async (req, res) => {
-  try {
-    const song = await createSong(req.body);
-    res.json(song);
-  } catch (error) {
-    res.status(400).json({ error: "Song did not create." });
+songs.post(
+  "/",
+  checkName,
+  checkArtist,
+  checkYear,
+  checkBoolean,
+  async (req, res) => {
+    try {
+      const song = await addSong(req.body);
+      res.json(song);
+    } catch (error) {
+      res.status(400).json({ error: "Song was not added." });
+    }
   }
-});
+);
 
 // Delete a song
 // localhost:3350/songs/:id

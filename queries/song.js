@@ -19,7 +19,7 @@ const getSong = async (id) => {
   }
 };
 
-const createSong = async (song) => {
+const addSong = async (song) => {
   try {
     const newSong = await db.one(
       "INSERT INTO songs (name, artist, album, year, genre, is_favorite) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
@@ -29,7 +29,7 @@ const createSong = async (song) => {
         song.album,
         song.year,
         song.genre,
-        song.is_favorite
+        song.is_favorite,
       ]
     );
     return newSong;
@@ -61,7 +61,7 @@ const updateSong = async (id, song) => {
         song.year,
         song.genre,
         song.is_favorite,
-        id
+        id,
       ]
     );
     return updatedSong;
@@ -70,4 +70,4 @@ const updateSong = async (id, song) => {
   }
 };
 
-module.exports = { getAllSongs, getSong, createSong, deleteSong, updateSong };
+module.exports = { getAllSongs, getSong, addSong, deleteSong, updateSong };
